@@ -2,7 +2,7 @@ on:
   workflow_dispatch:
 
 
-job:
+jobs:
   new-job:
     runs-on: ubuntu-latest
     environment: Pending
