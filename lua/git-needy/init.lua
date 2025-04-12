@@ -70,15 +70,15 @@ function get_github_token()
     github_token = os.getenv("GH_TOKEN")
   end
   if github_token == nil then
-    error("GITHUB_TOKEN or GH_TOKEN must be set for git-workflows.nvim")
+    error("GITHUB_TOKEN or GH_TOKEN must be set for git-needy.nvim")
   end
   return github_token
 end
 
 function get_headers(github_token)
   return {
-    "Content-Type: application/vnd.github.v3+json",
-    "Authorization Bearer: " .. github_token,
+    "Accept: application/vnd.github+json",
+    "Authorization: Bearer " .. github_token,
     "X-GitHub-Api-Version: 2022-11-28",
   }
 end
@@ -124,11 +124,14 @@ function update_workflows_for_repo(github_token, repo)
   end
   command = command .. '-X GET "' .. url .. '"'
 
+  print(command)
+
   vim.fn.jobstart(command, {
     stdout_buffered = true,
     on_stdout = function(_, data)
       if data then
         local rawdata = table.concat(data, "\n")
+        print(rawdata)
         local jsondata = vim.json.decode(rawdata)
         local repo_pending_workflows = {}
 
@@ -155,6 +158,9 @@ end
 function update_pending_workflows(config, github_token)
   for _, repo in ipairs(config.repos) do
     update_workflows_for_repo(github_token, repo)
+  end
+  if config.use_current then
+    update_workflows_for_repo(github_token, get_current_repo())
   end
 end
 
