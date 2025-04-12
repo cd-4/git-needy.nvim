@@ -1,3 +1,4 @@
+local popup = require("git-needy.popup")
 local M = {}
 
 local pending_workflows = {}
@@ -178,5 +179,11 @@ function M.setup(user_config)
 
   set_pending_workflow_timer(config, github_token)
 end
+
+function M.open() end
+
+vim.api.nvim_create_user_command("GitNeedyOpen", function()
+  popup.open_popup_window()
+end, {})
 
 return M
