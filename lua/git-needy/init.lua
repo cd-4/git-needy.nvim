@@ -4,7 +4,7 @@ local pending_workflows = {}
 local total_pending = 0
 
 local config = {
-  refresh_seconds = 30,
+  refresh_seconds = 60,
   use_current = true,
   repos = {},
   statuses = { "pending", "waiting" },
@@ -107,10 +107,10 @@ function get_current_repo()
 end
 
 function update_pending_for_repo(repo, workflows)
-  pending_workflows[repo] = repo_pending_workflows
+  pending_workflows[repo] = workflows
   local total = 0
-  for _, workflows in ipairs(pending_workflows) do
-    total = total + #workflows
+  for _, repo_workflows in pairs(pending_workflows) do
+    total = total + #repo_workflows
   end
   total_pending = total
 end
@@ -124,14 +124,11 @@ function update_workflows_for_repo(github_token, repo)
   end
   command = command .. '-X GET "' .. url .. '"'
 
-  print(command)
-
   vim.fn.jobstart(command, {
     stdout_buffered = true,
     on_stdout = function(_, data)
       if data then
         local rawdata = table.concat(data, "\n")
-        print(rawdata)
         local jsondata = vim.json.decode(rawdata)
         local repo_pending_workflows = {}
 
