@@ -4,7 +4,7 @@ local pending_workflows = {}
 local total_pending = 0
 
 local config = {
-  refresh_seconds = 60,
+  refresh_seconds = 30,
   use_current = true,
   repos = {},
   statuses = { "pending", "waiting" },
