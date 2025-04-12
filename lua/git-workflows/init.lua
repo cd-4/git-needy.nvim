@@ -35,7 +35,7 @@ function M.get_pending_count()
 end
 
 function M.get_pending_text()
-  return config.icon .. " " .. get_pending_count()
+  return config.icon .. " " .. M.get_pending_count()
 end
 
 function M.get_colors()
@@ -56,8 +56,8 @@ end
 
 function M.get_lualine_section()
   return {
-    get_pending_text,
-    color = get_colors,
+    M.get_pending_text,
+    color = M.get_colors,
     on_click = function()
       print("You Clicked it")
     end,
@@ -162,7 +162,7 @@ function set_pending_workflow_timer(config, github_token)
   local timer = vim.uv.new_timer()
   timer:start(
     0,
-    refresh_seconds * 1000,
+    config.refresh_seconds * 1000,
     vim.schedule_wrap(function()
       update_pending_workflows(config, github_token)
     end)
