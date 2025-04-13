@@ -52,6 +52,8 @@ By default, it will check the current repository you are in, as well as any repo
 
 ## Installation
 
+**NOTE** for this plugin to work you need to have either `GITHUB_TOKEN` or `GH_TOKEN` in your environment with permissions to view workflows in the appropriate repositories.
+
 #### Base Installation
 
 To install with `lazy.nvim`, do this
