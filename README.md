@@ -58,7 +58,7 @@ By default, it will check the current repository you are in, as well as any repo
 
 To install with `lazy.nvim`, do this
 
-```
+```lua
 {
   "cd-4/git-needy.nvim",
   config = function()
