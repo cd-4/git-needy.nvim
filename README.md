@@ -1,5 +1,20 @@
 # Git Needy
 
+### Table of Contents
+
+- [Purpose](#purpose)
+- [Features](#features)
+  - [Lualine](#lualine-integration)
+  - [Popup](#pending-workflow-visualizer)
+  - [Watch Repos](#persistent-repo-watching)
+- [Installation](#installation)
+  - [Base](#base-installation)
+  - [Status Bar](#status-bar-installation)
+    - [lualine](#lualine)
+    - [other](#other)
+- [Configuration](#configuration)
+
+
 ## Purpose
 
 Have you ever been hassled by a fellow employee to approve a Github workflow run?
