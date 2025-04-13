@@ -35,6 +35,10 @@ function M.get_pending_count()
   return total_pending
 end
 
+function M.get_pending_workflows()
+  return pending_workflows
+end
+
 function M.get_pending_text()
   return config.icon .. " " .. M.get_pending_count()
 end
@@ -183,7 +187,7 @@ end
 function M.open() end
 
 vim.api.nvim_create_user_command("GitNeedyOpen", function()
-  popup.open_popup_window()
+  popup.open_popup_window(pending_workflows)
 end, {})
 
 return M
