@@ -2,6 +2,22 @@ local popup = require("plenary.popup")
 
 local M = {}
 
+local function open_url(url)
+  local open_cmd
+  if vim.fn.has("mac") == 1 then
+    open_cmd = { "open", url }
+  elseif vim.fn.has("unix") == 1 then
+    open_cmd = { "xdg-open", url }
+  elseif vim.fn.has("win32") == 1 then
+    open_cmd = { "cmd.exe", "/C", "start", url }
+  else
+    vim.notify("Unsupported OS for opening URLs", vim.log.levels.ERROR)
+    return
+  end
+
+  vim.fn.jobstart(open_cmd, { detach = true })
+end
+
 local function create_buffer(pending_workflows)
   local width = 60 -- config.width or 60
   local height = 20 -- config.height or 10
@@ -40,7 +56,10 @@ function M.open_popup_window(pending_workflows)
   local tree_not_last = line_space .. "├─ "
   local tree_last = line_space .. "└─ "
 
+  local workflow_lines = {}
+
   local lines = {}
+  local cur_line = 1
   for repo, workflows in pairs(pending_workflows) do
     print(workflows)
     local count = #workflows
@@ -49,6 +68,8 @@ function M.open_popup_window(pending_workflows)
     end
     for i, workflow in ipairs(workflows) do
       local title = workflow.display_title
+      workflow_lines[cur_line] = workflow
+      cur_line = cur_line + 1
       if i == count then
         table.insert(lines, tree_last .. title)
       else
@@ -79,6 +100,20 @@ function M.open_popup_window(pending_workflows)
     end,
     desc = "Highlight current line",
   })
+
+  function get_current_workflow()
+    local line = vim.api.nvim_win_get_cursor(0)[1] - 1 -- get current line (0-based)
+    return workflow_lines[line]
+  end
+
+  function open_workflow_url()
+    local wf = get_current_workflow()
+    local url = wf.html_url
+    open_url(url)
+    vim.api.nvim_command("bd!")
+  end
+
+  vim.keymap.set("n", "<CR>", open_workflow_url, { buffer = bufnr, desc = "Open Workflow URL" })
 end
 
 return M
