@@ -1,6 +1,6 @@
 # Git Needy
 
-`git-needy.nvim` is a plugin that automatically keeps a tally of workflows that need to be revied in your statusbar.
+`git-needy.nvim` is a plugin that automatically keeps a tally of workflows that need to be reviewed in your statusbar.
 
 ### Table of Contents
 
