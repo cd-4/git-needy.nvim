@@ -153,3 +153,8 @@ require("git-needy").setup({
   },
 })
 ```
+
+## Other
+
+There is a way to approve a workflow just by hitting a URL, but I feel like just seeing a notification and approving it without looking further into it defeats the entire purpose of the approval process, so I chose not to implement that feature.
+
