@@ -65,9 +65,9 @@ To install with `lazy.nvim`, do this
   "cd-4/git-needy.nvim",
   config = function()
     require("git-needy").setup({
-      repos = {"my-repo-i-watch", "another-repo"}
-      vim.keymap.set("n", "<leader>wf", vim.cmd.GitNeedyOpen),
+      repos = {"my-repo-i-watch", "another-repo"}      
     })
+    vim.keymap.set("n", "<leader>wf", vim.cmd.GitNeedyOpen),
   end,
 },
 ```
