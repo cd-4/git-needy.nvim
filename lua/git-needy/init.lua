@@ -163,7 +163,10 @@ function update_pending_workflows(config, github_token)
     update_workflows_for_repo(github_token, repo)
   end
   if config.use_current then
-    update_workflows_for_repo(github_token, get_current_repo())
+    local current_repo = get_current_repo()
+    if current_repo ~= nil then
+      update_workflows_for_repo(github_token, current_repo)
+    end
   end
 end
 
