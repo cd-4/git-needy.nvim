@@ -1,5 +1,7 @@
 # Git Needy
 
+`git-needy.nvim` is a plugin that automatically keeps a tally of workflows that need to be revied in your statusbar.
+
 ### Table of Contents
 
 - [Purpose](#purpose)
@@ -19,15 +21,15 @@
 
 Have you ever been hassled by a fellow employee to approve a Github workflow run?
 
-Maybe you kicked off a long running workflow, then started working on something else and forgot to "Approve" the final job in the sequence?
+Maybe you kicked off a long running workflow, then started working on something else and forgot to "Approve" the final job in the sequence.
+
+Perhaps you just want to be a good employee and quickly approve workflows.
 
 Good news! **git-needy** is here to solve that! With this plugin, you can have a visualizer that sits in your lualine (or similar status line plugin) that will display the amount of pending workflows in your repositories, changing color based on how many there are.
 
 It also easily lets you navigate directly to Github to approve the workflows.
 
 ## Features
-
-
 
 #### lualine Integration
 
