@@ -44,7 +44,7 @@ By default, we include `waiting` workflows in addition to `pending`. The reasoni
 
 ![alt text](./popup.png)
 
-Simply run `:GitNeedyOpen` to open a window to view pending workflows (and workflows waiting for them), press `Enter` on the workflow you want to view, and it will open the approval page in your browser. Then after a very thorough investation, you can approve it in your browser.
+Simply run `:GitNeedyOpen` to open a window to view pending workflows (and workflows waiting for them), press `Enter` on the workflow you want to view, and it will open the approval page in your browser. Then after a very thorough investation, you can approve it in your browser. To exit this window, press `q`.
 
 #### Persistent Repo Watching
 
