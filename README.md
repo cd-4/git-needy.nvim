@@ -128,7 +128,7 @@ require("git-needy").setup({
   statuses = { "pending", "waiting" },
   -- Icon to display next to the number of pending workflows
   icon = "",
-  -- Severy limits that will change color of text
+  -- Severity limits that will change color of text
   severity_limits = {
     low = 0,
     med = 2,
