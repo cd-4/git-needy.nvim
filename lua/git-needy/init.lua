@@ -64,7 +64,8 @@ function M.get_lualine_section()
     M.get_pending_text,
     color = M.get_colors,
     on_click = function()
-      print("You Clicked it")
+      -- TODO
+      -- print("You Clicked it")
     end,
   }
 end

@@ -61,7 +61,6 @@ function M.open_popup_window(pending_workflows)
   local lines = {}
   local cur_line = 1
   for repo, workflows in pairs(pending_workflows) do
-    print(workflows)
     local count = #workflows
     if count > 0 then
       table.insert(lines, line_space .. " " .. repo)
