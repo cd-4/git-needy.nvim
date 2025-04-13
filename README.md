@@ -105,8 +105,11 @@ If you use a different status line plugin, you can still likely customize it to 
   --[[
   Returns colors in the form of:
     {
+      -- foreground
       fg = "#abcdef",
+      -- background
       bg = "#123456",
+      -- style
       gui = "bold",
     }
   --]]
