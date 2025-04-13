@@ -12,13 +12,20 @@ It also easily lets you navigate directly to Github to approve the workflows.
 
 ## Features
 
+
+
 #### lualine Integration
+
+![alt text](./lualine.png)
 
 By default, the section will display the amount of pending workflows with a color-coded background. It will be green for 0 pending workflows, yellow for 1 or 2 pending workflows, orange for 3 or 4, and red for 5 or more. To see how to easily navigate to them, see below.
 
 By default, we include `waiting` workflows in addition to `pending`. The reasoning is that the ones `waiting` are waiting on the `pending` ones, so it will show you the total amount of Github workflows that are essentially "backed up" as a result of you not approving workflows.
 
+
 #### Pending Workflow Visualizer
+
+![alt text](./popup.png)
 
 Simply run `:GitNeedyOpen` to open a window to view pending workflows (and workflows waiting for them), press `Enter` on the workflow you want to view, and it will open the approval page in your browser. Then after a very thorough investation, you can approve it in your browser.
 
