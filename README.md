@@ -17,6 +17,7 @@
     - [lualine](#lualine)
     - [other](#other)
 - [Configuration](#configuration)
+- [Contribution](#contribution)
 
 
 ## Purpose
@@ -163,6 +164,10 @@ require("git-needy").setup({
   },
 })
 ```
+
+## Contribution
+
+This is my first neovim plugin. It could definitely be cleaned up a bit but it's working for me so I don't plan on updating it too much. I encourage anyone who wants to to open an issue or PR to do so and I will hopefully get to it.
 
 ## Other
 
