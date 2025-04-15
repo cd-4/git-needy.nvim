@@ -67,6 +67,7 @@ To install with `lazy.nvim`, do this
     require("git-needy").setup({
       repos = {"my-user-or-org/my-repo-i-watch", "my-user/another-repo"}
     })
+    -- Add '<leader>wf' to open window
     vim.keymap.set("n", "<leader>wf", vim.cmd.GitNeedyOpen),
   end,
   dependencies = { "nvim-lua/plenary.nvim" },
@@ -131,6 +132,7 @@ require("git-needy").setup({
   -- Whether or not to check the current repository
   use_current = true,
   -- Repos to always query for (RECOMMENDED)
+  -- Must be in the form of org/repo or user/repo
   repos = {},
   -- Github workflow statuses to watch for
   statuses = { "pending", "waiting" },
