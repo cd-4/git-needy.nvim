@@ -135,24 +135,27 @@ function update_workflows_for_repo(github_token, repo)
     on_stdout = function(_, data)
       if data then
         local rawdata = table.concat(data, "\n")
-        local jsondata = vim.json.decode(rawdata)
-        local repo_pending_workflows = {}
 
-        for _, run in ipairs(jsondata.workflow_runs) do
-          local match = false
-          for _, desired_status in ipairs(config.statuses) do
-            if desired_status == run.status then
-              match = true
-              break
+        local success, jsondata = pcall(vim.json.decode, rawdata)
+        if success then
+          local repo_pending_workflows = {}
+
+          for _, run in ipairs(jsondata.workflow_runs) do
+            local match = false
+            for _, desired_status in ipairs(config.statuses) do
+              if desired_status == run.status then
+                match = true
+                break
+              end
+            end
+
+            if match then
+              table.insert(repo_pending_workflows, run)
             end
           end
 
-          if match then
-            table.insert(repo_pending_workflows, run)
-          end
+          update_pending_for_repo(repo, repo_pending_workflows)
         end
-
-        update_pending_for_repo(repo, repo_pending_workflows)
       end
     end,
   })
