@@ -140,6 +140,9 @@ function update_workflows_for_repo(github_token, repo)
         if success then
           local repo_pending_workflows = {}
 
+          if jsondata == nil then
+            return
+          end
           for _, run in ipairs(jsondata.workflow_runs) do
             local match = false
             for _, desired_status in ipairs(config.statuses) do
